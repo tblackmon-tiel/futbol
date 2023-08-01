@@ -1,1 +1,2 @@
-# place holder
+class Season_Stats
+end

@@ -1,1 +1,1 @@
-# Place holder
+require "./lib/season_stats"
