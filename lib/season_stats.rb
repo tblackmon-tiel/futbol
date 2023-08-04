@@ -3,6 +3,7 @@ require "csv"
 require "pry"
 
 class SeasonStats < StatDaddy
+
   def winningest_coach(season)
     coach_wins = Hash.new(0)
     coach_games = Hash.new(0)
@@ -25,8 +26,8 @@ class SeasonStats < StatDaddy
 
     winningest_coach = coach_win_percentages.max_by { |_, percentage| percentage }
     winningest_coach.first
+    end
   end
-
   def worst_coach(season)
     coach_wins = Hash.new(0)
     coach_games = Hash.new(0)
@@ -94,4 +95,3 @@ class SeasonStats < StatDaddy
       # Name of the Team with the fewest tackles in the season
     end
   end
-end
