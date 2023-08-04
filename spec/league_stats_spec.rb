@@ -46,8 +46,8 @@ RSpec.describe LeagueStats do
   end
 
   describe "#highest_scoring_visitor" do
-    it "returns name of team with highest avg score per game across all seasons while away" do
-
+    xit "returns name of team with highest avg score per game across all seasons while away" do
+      expect(@ls.highest_scoring_visitor).to eq("FC Dallas")
     end
   end
 
@@ -66,6 +66,12 @@ RSpec.describe LeagueStats do
   describe "#lowest_scoring_home_team" do
     it "returns name of team with lowest avg score per game across all seasons while home" do
 
+    end
+  end
+
+  describe "#average_goals_by_game" do
+    it "returns a hash of team_ids and average goals per game given a subset of GameTeams objects" do
+      expect(@ls.average_goals_by_team(@ls.game_teams)["3"]).to eq(2.1261770244821094)
     end
   end
 end
