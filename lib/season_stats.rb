@@ -1,82 +1,75 @@
-require './lib/stat_daddy'
+require "./lib/stat_daddy"
 require "csv"
 require "pry"
 
 class SeasonStats < StatDaddy
-
-  # kind of pseudo coded out this stuff
-  # @games.season.sort(season)
-  #   season 12 = @games.season("20122013")
-  #   season 13 = @games.season("20132014")
-  #   season 14 = @games.season("20142015")
-  #   season 15 = @games.season("20152016")
-  #   season 16 = @games.season("20162017")
-  #   season 17 = @games.season("20172018")
- 
-
-  #this method also works and is what Will sent over.
-  #this needs to then go in to each season in the @game.season and then compare the @game.game_id
-  #with game_teams.game_id so that it breaks down in to six seasons and finds the coach
-  #for each season. 
-  def winningest_coach
+  def winningest_coach(season)
     coach_wins = Hash.new(0)
     coach_games = Hash.new(0)
-    @game_teams.each do |data|
-     coach = data.head_coach
-     result = data.result
-     if result == "WIN"
-      coach_wins[coach] += 1
-     end
-     coach_games[coach] += 1
+
+    @game_teams.each do |game_team|
+      game = @games.find { |game| game.game_id == game_team.game_id }
+      next if game.nil? || game.season != season
+
+      coach = game_team.head_coach
+      coach_wins[coach] += 1 if game_team.result == "WIN"
+      coach_games[coach] += 1
     end
-    highest_win_percentage = 0.0
-    winningest_coach = nil
+
+    coach_win_percentages = {}
     coach_wins.each do |coach, wins|
-     win_percentage = wins.to_f / coach_games[coach]
-     if win_percentage > highest_win_percentage
-      highest_win_percentage = win_percentage
-      winningest_coach = coach
-     end
+      total_games = coach_games[coach]
+      win_percentage = (wins.to_f / total_games) * 100
+      coach_win_percentages[coach] = win_percentage.round(2)
     end
-    winningest_coach
-   end
-  #   @games.team_id.each do |data|
-  #     loss = data.result("loss")
-  #     win = data.result("win")
-  #     tie = data.result("tie")
 
-  #     # lost + win + tie and then the percentage somehow
+    winningest_coach = coach_win_percentages.max_by { |_, percentage| percentage }
+    winningest_coach.first
+  end
 
-  #   home_win_percentage = (home_wins.to_f / total_games) * 100
-  #   home_win_percentage.round(2)
-  # end
+  def worst_coach(season)
+    coach_wins = Hash.new(0)
+    coach_games = Hash.new(0)
 
-   
-  # end
+    @game_teams.each do |game_team|
+      game = @games.find { |game| game.game_id == game_team.game_id }
+      next if game.nil? || game.season != season
 
-  #   # Name of the Coach with the worst win percentage for the season
-  # end
+      coach = game_team.head_coach
+      coach_wins[coach] += 1 if game_team.result == "WIN"
+      coach_games[coach] += 1
+    end
 
-  def most_accurate_team()
+    coach_win_percentages = {}
+    coach_wins.each do |coach, wins|
+      total_games = coach_games[coach]
+      win_percentage = (wins.to_f / total_games) * 100
+      coach_win_percentages[coach] = win_percentage.round(2)
+    end
+
+    winningest_coach = coach_win_percentages.max_by { |_, percentage| percentage }
+    winningest_coach.last
+  end
+
+  def most_accurate_team(season)
     # Name of the Team with the best ratio of shots to goals for the season
   end
 
-  def least_accurate_team()
+  def least_accurate_team(season)
     # Name of the Team with the worst ratio of shots to goals for the season
   end
 
-#this tackles method works if you run rspec but this now needs to have the
-#tackles team string like "5" (look at the #most_tackles spec tests) return the name of the team
-# the name of the team is in the teams.csv so we have to call in to that
-# something like comparing @team.team_id
-#and then replacing the instance of @game_teams.team_id to @team.team_name
+  # this tackles method works if you run rspec but this now needs to have the
+  # tackles team string like "5" (look at the #most_tackles spec tests) return the name of the team
+  # the name of the team is in the teams.csv so we have to call in to that
+  # something like comparing @team.team_id
+  # and then replacing the instance of @game_teams.team_id to @team.team_name
 
-
-#either way, this method can be used for both methods below eventually, just have to 
-#flesh out what that means for each season as well.
-#season is only listed in the games.csv so something like @game.season to compile 
-#each seasons and then compare somehow the seasons with the game_id instances in
-#both @game and @game_teams. 
+  # either way, this method can be used for both methods below eventually, just have to
+  # flesh out what that means for each season as well.
+  # season is only listed in the games.csv so something like @game.season to compile
+  # each seasons and then compare somehow the seasons with the game_id instances in
+  # both @game and @game_teams.
   def tackles
     tackles_total = Hash.new(0)
     @game_teams.each do |data|
@@ -96,7 +89,7 @@ class SeasonStats < StatDaddy
     end
   end
 
-  def fewest_tackles()
+  def fewest_tackles(season)
     @games_teams_fixture_path.each do |data|
       # Name of the Team with the fewest tackles in the season
     end
