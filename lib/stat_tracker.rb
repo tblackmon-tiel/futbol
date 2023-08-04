@@ -1,13 +1,21 @@
 require "./lib/game_stats"
-# require "./lib/league_stats"
+require "./lib/league_stats"
 require "./lib/season_stats"
-require 'csv'
+require "csv"
 
 class StatTracker
+  attr_reader :game_stats,
+              :league_stats,
+              :season_stats
 
   def initialize(locations)
     @game_stats = GameStats.new(locations)
+    @league_stats = LeagueStats.new(locations)
+    @season_stats = SeasonStats.new(locations)
+  end
 
+  def self.from_csv(locations)
+    StatTracker.new(locations)
   end
 
   def highest_total_score

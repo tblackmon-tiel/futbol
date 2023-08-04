@@ -1,16 +1,12 @@
-require 'csv'
-require './lib/stat_tracker'
-
-# stat_tracker = StatTracker.from_csv(locations)
-# stat_tracker.game.each
+require "./lib/stat_tracker"
 
 RSpec.describe StatTracker do
   before(:each) do
-    @game_path = './data/games.csv'
-    @teams_path = './data/teams.csv'
-    @game_teams_path = './data/game_teams.csv'
-    @games_fixture_path = './data/games_fixture.csv'
-    @game_teams_fixture_path = './data/games_teams_fixture.csv'
+    @game_path = "./data/games.csv"
+    @teams_path = "./data/teams.csv"
+    @game_teams_path = "./data/game_teams.csv"
+    @games_fixture_path = "./data/games_fixture.csv"
+    @game_teams_fixture_path = "./data/games_teams_fixture.csv"
     @locations = {
       games: @games_fixture_path,
       teams: @teams_path,
@@ -28,7 +24,7 @@ RSpec.describe StatTracker do
 
       expect(@tracker.game_stats).to be_a GameStats
       expect(@tracker.season_stats).to be_a SeasonStats
-      expect(@tracker.league_stats).to eq(nil)
+      expect(@tracker.league_stats).to be_a LeagueStats
     end
   end
 
@@ -38,7 +34,7 @@ RSpec.describe StatTracker do
 
       expect(tracker.game_stats).to be_a GameStats
       expect(tracker.season_stats).to be_a SeasonStats
-      expect(tracker.league_stats).to eq(nil)
+      expect(tracker.league_stats).to be_a LeagueStats
     end
   end
 

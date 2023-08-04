@@ -1,15 +1,15 @@
 require "csv"
 require "./lib/game_stats"
-require 'pry'
-require './lib/stat_tracker'
+require "pry"
+require "./lib/stat_tracker"
 
 RSpec.describe GameStats do
   before :each do
-    @game_path = './data/games.csv'
-    @team_path = './data/teams.csv'
-    @game_teams_path = './data/game_teams.csv'
-    @games_fixture_path = './data/games_fixture.csv'
-    @games_teams_fixture_path = './data/games_teams_fixture.csv'
+    @game_path = "./data/games.csv"
+    @team_path = "./data/teams.csv"
+    @game_teams_path = "./data/game_teams.csv"
+    @games_fixture_path = "./data/games_fixture.csv"
+    @games_teams_fixture_path = "./data/games_teams_fixture.csv"
     @locations = 
     {
       games: @games_fixture_path,
@@ -23,41 +23,41 @@ RSpec.describe GameStats do
   end
 
   describe "game_stats exists" do
-    it 'exists' do
+    it "exists" do
       expect(@game_stats).to be_an_instance_of GameStats
     end
   end
 
   describe "#highest_total_score" do
-    it 'finds the highest sum of the winning and losing teams scores' do
+    it "finds the highest sum of the winning and losing teams scores" do
       # binding.pry
       expect(@game_stats.highest_total_score).to eq(7)
     end
   end
 
   describe "#lowest_total_score" do
-    it 'finds the lowest sum of the winning and losing teams scores' do
+    it "finds the lowest sum of the winning and losing teams scores" do
       # binding.pry
       expect(@game_stats.lowest_total_score).to eq(1)
     end
   end
 
   describe "#percentage_home_wins" do
-    it 'finds the percentage of games that a home team has won (rounded to the nearest 100th)' do
+    it "finds the percentage of games that a home team has won (rounded to the nearest 100th)" do
       # binding.pry
       expect(@game_stats.percentage_home_wins).to eq(60.0)
     end
   end
 
   describe "#percentage_visitor_wins" do
-    it 'finds the percentage of games that a visitor has won (rounded to the nearest 100th)' do
+    it "finds the percentage of games that a visitor has won (rounded to the nearest 100th)" do
       # binding.pry
       expect(@game_stats.percentage_visitor_wins).to eq(31.43)
     end
   end
   
   describe "#percentage_ties" do
-    it 'finds the percentage of games that has resulted in a tie (rounded to the nearest 100th)' do
+    it "finds the percentage of games that has resulted in a tie (rounded to the nearest 100th)" do
       # binding.pry
       expect(@game_stats.percentage_ties).to eq(8.57)
     end
@@ -80,7 +80,7 @@ RSpec.describe GameStats do
   end
   
   describe "#average_goals_per_game" do
-    it 'finds the average number of goals scored in a game across all seasons including both home and away goals (rounded to the nearest 100th)' do
+    it "finds the average number of goals scored in a game across all seasons including both home and away goals (rounded to the nearest 100th)" do
       # binding.pry
       expect(@game_stats.average_goals_per_game).to eq(4.11)
     end
