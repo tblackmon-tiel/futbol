@@ -22,11 +22,15 @@ class LeagueStats < StatDaddy
   end
 
   def highest_scoring_home_team
-
+    all_home_games = @game_teams.find_all { |game| game.hoa == "home" }
+    highest_avg_team_id = average_goals_by_team(all_home_games).max_by { |team, goals| goals }[0]
+    @teams.find { |team| team.team_id == highest_avg_team_id }.team_name
   end
 
   def lowest_scoring_visitor
-
+    all_away_games = @game_teams.find_all { |game| game.hoa == "away" }
+    lowest_avg_team_id = average_goals_by_team(all_away_games).min_by { |team, goals| goals }[0]
+    @teams.find { |team| team.team_id == lowest_avg_team_id }.team_name
   end
 
   def lowest_scoring_home_team

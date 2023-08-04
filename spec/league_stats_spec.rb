@@ -59,7 +59,7 @@ RSpec.describe LeagueStats do
 
   describe "#lowest_scoring_visitor" do
     it "returs name of team with lowest avg score per game across all seasons while a visitor" do
-
+      expect(@ls.lowest_scoring_visitor).to eq("San Jose Earthquakes")
     end
   end
 
