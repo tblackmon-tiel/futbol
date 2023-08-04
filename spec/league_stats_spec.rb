@@ -65,7 +65,7 @@ RSpec.describe LeagueStats do
 
   describe "#lowest_scoring_home_team" do
     it "returns name of team with lowest avg score per game across all seasons while home" do
-
+      expect(@ls.lowest_scoring_home_team).to eq("Utah Royals FC")
     end
   end
 

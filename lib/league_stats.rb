@@ -34,7 +34,9 @@ class LeagueStats < StatDaddy
   end
 
   def lowest_scoring_home_team
-
+    all_home_games = @game_teams.find_all { |game| game.hoa == "home" }
+    lowest_avg_team_id = average_goals_by_team(all_home_games).min_by { |team, goals| goals }[0]
+    @teams.find { |team| team.team_id == lowest_avg_team_id }.team_name
   end
 
   def average_goals_by_team(game_teams)
