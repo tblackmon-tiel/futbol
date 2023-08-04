@@ -6,7 +6,12 @@ class LeagueStats < StatDaddy
   end
 
   def best_offense
-    
+    goals_by_team = Hash.new(0)
+    @game_teams.each do |game|
+      require 'pry';binding.pry
+      goals_by_team[:game[:team_id]] += game[:goals]
+    end
+    require 'pry';binding.pry
   end
 
   def worst_offense

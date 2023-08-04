@@ -35,7 +35,7 @@ RSpec.describe LeagueStats do
 
   describe "#best_offense" do
     it "returns name of team with highest avg goals scored per game across all seasons" do
-      
+      expect(@ls.best_offense).to not_be nil
     end
   end
 
