@@ -8,9 +8,9 @@ RSpec.describe LeagueStats do
     @games_fixture_path = './data/games_fixture.csv'
     @game_teams_fixture_path = './data/games_teams_fixture.csv'
     @locations = {
-      games: @games_fixture_path,
+      games: @game_path,
       teams: @teams_path,
-      game_teams: @game_teams_fixture_path,
+      game_teams: @game_teams_path,
     }
     @ls = LeagueStats.new(@locations)
   end
@@ -35,7 +35,7 @@ RSpec.describe LeagueStats do
 
   describe "#best_offense" do
     it "returns name of team with highest avg goals scored per game across all seasons" do
-      expect(@ls.best_offense).to not_be nil
+      expect(@ls.best_offense).to eq("Reign FC")
     end
   end
 

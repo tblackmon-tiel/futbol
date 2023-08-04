@@ -7,11 +7,19 @@ class LeagueStats < StatDaddy
 
   def best_offense
     goals_by_team = Hash.new(0)
+    total_games_by_team = Hash.new(0)
+    average_goals_by_team = Hash.new
     @game_teams.each do |game|
-      require 'pry';binding.pry
-      goals_by_team[:game[:team_id]] += game[:goals]
+      goals_by_team[game.team_id] += game.goals.to_f
     end
-    require 'pry';binding.pry
+    @game_teams.each do |game|
+      total_games_by_team[game.team_id] += 1
+    end
+    goals_by_team.each_key do |team|
+      average_goals_by_team[team] = goals_by_team[team] / total_games_by_team[team].to_f
+    end
+    highest_avg_team_id = average_goals_by_team.max_by { |team, goals| goals }[0]
+    @teams.find { |team| team.team_id == highest_avg_team_id }.team_name
   end
 
   def worst_offense
