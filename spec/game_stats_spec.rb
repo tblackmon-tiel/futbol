@@ -64,9 +64,18 @@ RSpec.describe GameStats do
   end
 
   describe "#count_of_games_by_season" do
-    xit 'creates a hash with season names (e.g. 20122013) as keys and counts of games as values' do
+    it 'creates a hash with season names (e.g. 20122013) as keys and counts of games as values' do
       # binding.pry
-      expect(@game_stats.count_of_games_by_season).to eq()
+      expected_hash = 
+      {
+        "20132014"=>12,
+        "20122013"=>8,
+        "20142015"=>7,
+        "20162017"=>4,
+        "20152016"=>3,
+        "20172018"=>1
+      }
+      expect(@game_stats.count_of_games_by_season).to eq(expected_hash)
     end
   end
   
@@ -78,9 +87,18 @@ RSpec.describe GameStats do
   end
 
   describe "#average_goals_by_season" do
-    xit 'finds the average number of goals scored in a game organized in a hash with season names (e.g. 20122013) as keys and a float representing the average number of goals in a game for that season as values (rounded to the nearest 100th)' do
+    it 'finds the average number of goals scored in a game organized in a hash with season names (e.g. 20122013) as keys and a float representing the average number of goals in a game for that season as values (rounded to the nearest 100th)' do
       # binding.pry
-      expect(@game_stats.average_goals_by_season).to eq()
+      expected_hash = 
+      {
+        "20132014"=>4.25,
+        "20122013"=>4.125,
+        "20142015"=>3.857142857142857,
+        "20162017"=>4.5,
+        "20152016"=>3.6666666666666665,
+        "20172018"=>4.0
+      }
+      expect(@game_stats.average_goals_by_season).to eq(expected_hash)
     end
   end
 end

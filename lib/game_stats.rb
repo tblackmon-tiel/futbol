@@ -97,14 +97,14 @@ class GameStats < StatDaddy
   end
 
   def count_of_games_by_season
-    games_by_season = Hash.new(0)
+    games_by_season = Hash.new(0) # initialize empty hash with default 0
 
     @games.each do |data|
-      season = @games[1]
-      games_by_season.season += 1
+      season = data.season # extract index position 1 which is @season 
+      games_by_season[season] += 1 # increments count of games for that season by 1
     end
 
-    games_by_season
+    games_by_season # return hash which contains count of games for each season
   end
 
   def average_goals_per_game
@@ -122,5 +122,22 @@ class GameStats < StatDaddy
   end
 
   def average_goals_by_season
+    goals_by_season = Hash.new(0) # initialize empty hash with default 0
+    total_goals_by_season = Hash.new(0) # initialize empty hash with default 0
+
+    @games.each do |data|
+      season = data.season # season gets pulled from data index 1
+      goals = data.home_goals.to_i + data.away_goals.to_i # convert to integers so string to integer doesnt pop up
+      goals_by_season[season] += goals 
+      
+      total_goals_by_season[season] += 1 
+    end
+
+    average_goals = {} # initialize empty hash for average goals
+    goals_by_season.each do |season, total_goals| # iterate through season and goals
+      total_games = total_goals_by_season[season] # 
+      average_goals[season] = total_goals.to_f / total_games
+    end
+    average_goals
   end
 end
