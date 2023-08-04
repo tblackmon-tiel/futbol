@@ -16,8 +16,9 @@ class LeagueStats < StatDaddy
   end
 
   def highest_scoring_visitor
-    all_away_games = @game_teams.find_all { |game| game.hoa == away }
-    
+    all_away_games = @game_teams.find_all { |game| game.hoa == "away" }
+    highest_avg_team_id = average_goals_by_team(all_away_games).max_by { |team, goals| goals }[0]
+    @teams.find { |team| team.team_id == highest_avg_team_id }.team_name
   end
 
   def highest_scoring_home_team
