@@ -8,10 +8,10 @@ class Team
 
   def initialize(data)
     @team_id = data[:team_id]
-    @franchise_id = data[:franchiseId]
-    @team_name = data[:teamName]
+    @franchise_id = data[:franchiseid]
+    @team_name = data[:teamname]
     @abbreviation = data[:abbreviation]
-    @stadium = data[:Stadium]
+    @stadium = data[:stadium]
     @link = data[:link]
   end
 end
