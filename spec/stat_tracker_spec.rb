@@ -72,11 +72,11 @@ RSpec.describe StatTracker do
     it 'creates a hash with season names (e.g. 20122013) as keys and counts of games as values' do
       expected_hash = 
       {
-        "20132014"=>806,
-        "20122013"=>1317,
+        "20122013"=>806,
+        "20132014"=>1323,
         "20142015"=>1319,
-        "20162017"=>1321,
-        "20152016"=>1323,
+        "20152016"=>1321,
+        "20162017"=>1317,
         "20172018"=>1355
       }
       expect(@tracker.count_of_games_by_season).to eq(expected_hash)
@@ -95,11 +95,11 @@ RSpec.describe StatTracker do
       # binding.pry
       expected_hash = 
       {
-        "20132014"=>4.12,
-        "20122013"=>4.23,
+        "20122013"=>4.12,
+        "20132014"=>4.19,
         "20142015"=>4.14,
-        "20162017"=>4.16,
-        "20152016"=>4.19,
+        "20152016"=>4.16,
+        "20162017"=>4.23,
         "20172018"=>4.44
       }
       expect(@tracker.average_goals_by_season).to eq(expected_hash)
@@ -107,84 +107,84 @@ RSpec.describe StatTracker do
   end
 
   describe "#count_of_teams" do
-    xit "returns total number of teams in the data" do
+    it "returns total number of teams in the data" do
       expect(@tracker.count_of_teams).to be(32)
     end
   end
 
   describe "#best_offense" do
-    xit "returns name of team with highest avg goals scored per game across all seasons" do
+    it "returns name of team with highest avg goals scored per game across all seasons" do
       expect(@tracker.best_offense).to eq("Reign FC")
     end
   end
 
   describe "#worst_offense" do
-    xit "returns name of team with lowest avg goals per game across all seasons" do
+    it "returns name of team with lowest avg goals per game across all seasons" do
       expect(@tracker.worst_offense).to eq("Utah Royals FC")
     end
   end
 
   describe "#highest_scoring_visitor" do
-    xit "returns name of team with highest avg score per game across all seasons while away" do
+    it "returns name of team with highest avg score per game across all seasons while away" do
       expect(@tracker.highest_scoring_visitor).to eq("FC Dallas")
     end
   end
 
   describe "#highest_scoring_home_team" do
-    xit "returns name of team with highest avg score per game across all seasons while home" do
+    it "returns name of team with highest avg score per game across all seasons while home" do
       expect(@tracker.highest_scoring_home_team).to eq("Reign FC")
     end
   end
 
   describe "#lowest_scoring_visitor" do
-    xit "returs name of team with lowest avg score per game across all seasons while a visitor" do
+    it "returs name of team with lowest avg score per game across all seasons while a visitor" do
       expect(@tracker.lowest_scoring_visitor).to eq("San Jose Earthquakes")
     end
   end
 
   describe "#lowest_scoring_home_team" do
-    xit "returns name of team with lowest avg score per game across all seasons while home" do
+    it "returns name of team with lowest avg score per game across all seasons while home" do
       expect(@tracker.lowest_scoring_home_team).to eq("Utah Royals FC")
     end
   end
 
   describe "#winningest_coach" do
-    xit "can name the coach with the best win percentage of the season" do
+    it "can name the coach with the best win percentage of the season" do
       expect(@tracker.winningest_coach("20132014")).to eq "Claude Julien"
       expect(@tracker.winningest_coach("20142015")).to eq "Alain Vigneault"
     end
   end 
 
   describe "#worst_coach" do
-    xit "can name the coach with the worst percentage for the season" do
+    it "can name the coach with the worst percentage for the season" do
       expect(@tracker.worst_coach("20132014")).to eq "Peter Laviolette"
       expect(@tracker.worst_coach("20142015")).to eq("Craig MacTavish").or(eq("Ted Nolan"))
     end
   end
 
   describe "#most_accurate_team" do
-    xit "can name the team with the best raiot of shots to goals for the season" do
+    it "can name the team with the best raiot of shots to goals for the season" do
       expect(@tracker.most_accurate_team("20132014")).to eq "Real Salt Lake"
       expect(@tracker.most_accurate_team("20142015")).to eq "Toronto FC"
     end
   end
 
   describe "#least_accurate_team" do
-    xit "can name the team with the worst ratio of shots to goals for the season" do
+    it "can name the team with the worst ratio of shots to goals for the season" do
       expect(@tracker.least_accurate_team("20132014")).to eq "New York City FC"
       expect(@tracker.least_accurate_team("20142015")).to eq "Columbus Crew SC"
     end
   end
 
   describe "#most_tackles" do
-    xit "can name the team with the most tackles in the season" do
+    it "can name the team with the most tackles in the season" do
       expect(@tracker.most_tackles("20132014")).to eq "FC Cincinnati"
       expect(@tracker.most_tackles("20142015")).to eq "Seattle Sounders FC"
     end
   end
 
   describe "#fewest_tackles" do
-    xit "can name the team with the fewest tackles in the season" do
+    it "can name the team with the fewest tackles in the season" do
       expect(@tracker.fewest_tackles("20132014")).to eq "Atlanta United"
       expect(@tracker.fewest_tackles("20142015")).to eq "Orlando City SC"
     end

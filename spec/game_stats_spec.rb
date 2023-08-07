@@ -45,21 +45,21 @@ RSpec.describe GameStats do
   describe "#percentage_home_wins" do
     it "finds the percentage of games that a home team has won (rounded to the nearest 100th)" do
       # binding.pry
-      expect(@game_stats.percentage_home_wins).to eq(60.0)
+      expect(@game_stats.percentage_home_wins).to eq(0.6)
     end
   end
 
   describe "#percentage_visitor_wins" do
     it "finds the percentage of games that a visitor has won (rounded to the nearest 100th)" do
       # binding.pry
-      expect(@game_stats.percentage_visitor_wins).to eq(31.43)
+      expect(@game_stats.percentage_visitor_wins).to eq(0.31)
     end
   end
   
   describe "#percentage_ties" do
     it "finds the percentage of games that has resulted in a tie (rounded to the nearest 100th)" do
       # binding.pry
-      expect(@game_stats.percentage_ties).to eq(8.57)
+      expect(@game_stats.percentage_ties).to eq(0.09)
     end
   end
 
@@ -91,11 +91,11 @@ RSpec.describe GameStats do
       # binding.pry
       expected_hash = 
       {
+        "20122013"=>4.13,
         "20132014"=>4.25,
-        "20122013"=>4.125,
-        "20142015"=>3.857142857142857,
+        "20142015"=>3.86,
+        "20152016"=>3.67,
         "20162017"=>4.5,
-        "20152016"=>3.6666666666666665,
         "20172018"=>4.0
       }
       expect(@game_stats.average_goals_by_season).to eq(expected_hash)

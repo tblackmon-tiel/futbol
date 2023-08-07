@@ -123,7 +123,7 @@ class GameStats < StatDaddy
       goals = data.home_goals.to_i + data.away_goals.to_i # convert to integers so string to integer doesnt pop up
       goals_by_season[season] += goals 
       
-      total_goals_by_season[season] += 1 
+      total_goals_by_season[season] += 1 # count of games for particular season 
     end
 
     average_goals = {} # initialize empty hash for average goals
