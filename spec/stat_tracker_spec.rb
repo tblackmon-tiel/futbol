@@ -149,32 +149,44 @@ end
   end
 
   describe "#winningest_coach" do
-    it "" do
+    it "can name the coach with the best win percentage of the season" do
+      expect(@season_stats.winningest_coach("20132014")).to eq "Claude Julien"
+      expect(@season_stats.winningest_coach("20142015")).to eq "Alain Vigneault"
     end
-  end
+  end 
 
   describe "#worst_coach" do
-    it "" do
+    it "can name the coach with the worst percentage for the season" do
+      expect(@season_stats.worst_coach("20132014")).to eq "Peter Laviolette"
+      expect(@season_stats.worst_coach("20142015")).to eq("Craig MacTavish").or(eq("Ted Nolan"))
     end
   end
 
   describe "#most_accurate_team" do
-    it "" do
+    it "can name the team with the best raiot of shots to goals for the season" do
+      expect(@season_stats.most_accurate_team("20132014")).to eq "Real Salt Lake"
+      expect(@season_stats.most_accurate_team("20142015")).to eq "Toronto FC"
     end
   end
 
   describe "#least_accurate_team" do
-    it "" do
+    it "can name the team with the worst ratio of shots to goals for the season" do
+      expect(@season_stats.least_accurate_team("20132014")).to eq "New York City FC"
+      expect(@season_stats.least_accurate_team("20142015")).to eq "Columbus Crew SC"
     end
   end
 
   describe "#most_tackles" do
-    it "" do
+    it "can name the team with the most tackles in the season" do
+      expect(@season_stats.most_tackles("20132014")).to eq "FC Cincinnati"
+      expect(@season_stats.most_tackles("20142015")).to eq "Seattle Sounders FC"
     end
   end
 
   describe "#fewest_tackles" do
-    it "" do
+    it "can name the team with the fewest tackles in the season" do
+      expect(@season_stats.fewest_tackles("20132014")).to eq "Atlanta United"
+      expect(@season_stats.fewest_tackles("20142015")).to eq "Orlando City SC"
     end
   end
 end
