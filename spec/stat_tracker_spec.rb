@@ -72,11 +72,11 @@ RSpec.describe StatTracker do
     it 'creates a hash with season names (e.g. 20122013) as keys and counts of games as values' do
       expected_hash = 
       {
-        "20132014"=>806,
-        "20122013"=>1317,
+        "20122013"=>806,
+        "20132014"=>1323,
         "20142015"=>1319,
-        "20162017"=>1321,
-        "20152016"=>1323,
+        "20152016"=>1321,
+        "20162017"=>1317,
         "20172018"=>1355
       }
       expect(@tracker.count_of_games_by_season).to eq(expected_hash)
@@ -95,11 +95,11 @@ RSpec.describe StatTracker do
       # binding.pry
       expected_hash = 
       {
-        "20132014"=>4.12,
-        "20122013"=>4.23,
+        "20122013"=>4.12,
+        "20132014"=>4.19,
         "20142015"=>4.14,
-        "20162017"=>4.16,
-        "20152016"=>4.19,
+        "20152016"=>4.16,
+        "20162017"=>4.23,
         "20172018"=>4.44
       }
       expect(@tracker.average_goals_by_season).to eq(expected_hash)
