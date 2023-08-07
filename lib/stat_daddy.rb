@@ -1,7 +1,7 @@
 require "csv"
-require "./lib/game"
-require "./lib/team"
-require "./lib/game_teams"
+require_relative "game"
+require_relative "team"
+require_relative "game_teams"
 
 class StatDaddy
   attr_reader :games,

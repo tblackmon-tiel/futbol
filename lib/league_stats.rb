@@ -1,4 +1,4 @@
-require './lib/stat_daddy'
+require_relative "stat_daddy"
 
 class LeagueStats < StatDaddy
   def count_of_teams
