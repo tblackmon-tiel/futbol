@@ -1,4 +1,3 @@
-require './lib/stat_daddy'
 require "csv"
 require "pry"
 require_relative "stat_daddy"
