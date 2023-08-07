@@ -19,7 +19,8 @@ Starter repository for the [Turing School](https://turing.io/) Futbol project.
 
 # - A 2-3 sentence summary describing your approach to the code design.
 
-- Our approach to the projects code design is a combination of solo efforts through assigned work. We are going to leverage the experience of the people who feel comfortable with coding the more advanced methods and functions so that all team members can grow and not feel left behind or confused. 
+- Our approach to the projects code design is a combination of solo efforts through assigned work. We are going to leverage the experience of the people who feel comfortable with coding the more advanced methods and functions so that all team members can grow and not feel left behind or confused. Below is the link to our Trello board for assigned tasks.
+- [Trello Assigment Board](https://trello.com/b/M4QQL6QR/futbol) 
 
 Include link to your initial DTR document and the date it was completed. If you do additional DTRs later in the project, you should link the revised versions here as well with the date. New versions should be listed alongside older versions. Do not delete old DTRs.
 
