@@ -101,27 +101,33 @@ class SeasonStats < StatDaddy
     @teams.find { |team| team.team_id == least_accurate_team }.team_name
   end
 
-  def tackles
-    tackles_total = Hash.new(0)
-    @game_teams.each do |data|
-      team_id = data.team_id
-      tackles = data.tackles.to_i
-      tackles_total[team_id] += tackles
-    end
-    tackles_total
-  end
+  def most_tackles(season)
+    team_tackles = Hash.new(0)
+    @game_teams.each do |game_team|
+      game = @games.find { |game| game.game_id == game_team.game_id }
+      next if game.nil? || game.season != season
 
-  # Name of the Team with the most tackles in the season
-  def most_tackles
-    team_tackles = []
-    tackles
-    @team_goals.each do |team_id, tackles|
-      puts "Team ID #{team_id}: Total Tackles - #{tackles}"
+      team = game_team.team_id
+      tackles = game_team.tackles.to_i
+      team_tackles[team] += tackles
     end
+
+    team_most_tackles = team_tackles.max_by { |_, tackles| tackles }.first
+    @teams.find { |team| team.team_id == team_most_tackles }.team_name
   end
 
   def fewest_tackles(season)
-    @games_teams_fixture_path.each do |data|
-      # Name of the Team with the fewest tackles in the season
+    team_tackles = Hash.new(0)
+    @game_teams.each do |game_team|
+      game = @games.find { |game| game.game_id == game_team.game_id }
+      next if game.nil? || game.season != season
+
+      team = game_team.team_id
+      tackles = game_team.tackles.to_i
+      team_tackles[team] += tackles
     end
+
+    team_fewest_tackles = team_tackles.min_by { |_, tackles| tackles }.first
+    @teams.find { |team| team.team_id == team_fewest_tackles }.team_name
   end
+end
