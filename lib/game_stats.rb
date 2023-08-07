@@ -5,11 +5,6 @@ require_relative "stat_daddy"
 # binding.pry
 class GameStats < StatDaddy
 
-  # def initialize(locations)
-  #   @games = CSV.open(locations[:games], headers: true, header_converters: :symbol).map {|game| Game.new(game)}
-  #   # binding.pry
-  # end
-
   def highest_total_score
     highest_total_score = 0
 
@@ -52,7 +47,7 @@ class GameStats < StatDaddy
       total_games += 1
     end
 
-    home_win_percentage = (home_wins.to_f / total_games) * 100
+    home_win_percentage = (home_wins.to_f / total_games) 
     home_win_percentage.round(2)
   end
 
@@ -71,7 +66,7 @@ class GameStats < StatDaddy
       total_games += 1
     end
 
-    away_win_percentage = (away_wins.to_f / total_games) * 100
+    away_win_percentage = (away_wins.to_f / total_games) 
     away_win_percentage.round(2)
   end
 
@@ -90,7 +85,7 @@ class GameStats < StatDaddy
       total_games += 1
     end
 
-    tie_percentage = (ties.to_f / total_games) * 100
+    tie_percentage = (ties.to_f / total_games) 
     tie_percentage.round(2)
   end
 
@@ -102,7 +97,7 @@ class GameStats < StatDaddy
       games_by_season[season] += 1 # increments count of games for that season by 1
     end
 
-    games_by_season # return hash which contains count of games for each season
+    games_by_season 
   end
 
   def average_goals_per_game
@@ -133,9 +128,11 @@ class GameStats < StatDaddy
 
     average_goals = {} # initialize empty hash for average goals
     goals_by_season.each do |season, total_goals| # iterate through season and goals
-      total_games = total_goals_by_season[season] # 
+      total_games = total_goals_by_season[season] 
       average_goals[season] = total_goals.to_f / total_games
     end
-    average_goals
+
+    round_average_goals = average_goals.transform_values { |value| value.round(2) }
+    round_average_goals
   end
 end
