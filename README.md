@@ -55,6 +55,12 @@ We did our retro on a trello board.
 
 One of the goals that we had coming out of our retro was that we wanted to be better about our collaboration skills. As a team we made sure to put an emphasis on communication, and setting apart time to work together on problems when needed. A prime example of this was one evening, Cory and Tyler started a driver/navigator session to knock out some technical problems and update our code. 
 
+## Figma
+
+Here is a link to our figma board. This was/is a major development for us to succeeding in this project.
+
+https://www.figma.com/file/XyFbQzNSmEi5b22qM5kIx4/Futbol?type=whiteboard&node-id=0%3A1&t=LVMBSzjxmu5rrUcP-1
+
 Create a section in your README called “Contributors”. List each group member’s name and link to their LinkedIn and Github profiles.
 
 ***Contributors:***
